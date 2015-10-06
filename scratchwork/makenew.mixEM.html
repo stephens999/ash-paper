@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title></title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<p>The aim here is to use the SQUAREM package to improve the speed of convergence of the EM algorithm.</p>
+
+<p>First here is our existing implementation.</p>
+
+<pre><code class="r">mixEM = function(matrix_lik, prior, pi.init = NULL, tol = 1e-04, maxiter = 5000) {
+    n = nrow(matrix_lik)
+    k = ncol(matrix_lik)
+    B = rep(0, maxiter)
+    pi = pi.init
+    if (is.null(pi.init)) {
+        pi = rep(1/k, k)  # Use as starting point for pi
+    }
+    pi = ifelse(pi &lt; 1e-05, 1e-05, pi)  #set any estimates that are too small to be just very small
+    pi = normalize(pi)
+
+    loglik = rep(0, maxiter)
+    priordens = rep(0, maxiter)
+    m = t(pi * t(matrix_lik))  # matrix_lik is n by k; so this is also n by k
+    m.rowsum = rowSums(m)
+    loglik[1] = sum(log(m.rowsum))
+    priordens[1] = sum((prior - 1) * log(pi))
+    classprob = m/m.rowsum  #an n by k matrix
+    i = 1
+    if (maxiter &gt;= 2) {
+        for (i in 2:maxiter) {
+            pi = colSums(classprob) + prior - 1
+            pi = ifelse(pi &lt; 1e-05, 1e-05, pi)  #set any estimates that are less than zero, which can happen with prior&lt;1, to 0
+            pi = normalize(pi)
+
+            # Now re-estimate pi
+            m = t(pi * t(matrix_lik))
+            m.rowsum = rowSums(m)
+            loglik[i] = sum(log(m.rowsum))
+            priordens[i] = sum((prior - 1) * log(pi))
+            classprob = m/m.rowsum
+
+
+            if (abs(loglik[i] + priordens[i] - loglik[i - 1] - priordens[i - 
+                1]) &lt; tol) 
+                break
+        }
+    }
+    converged = (abs(loglik[i] + priordens[i] - loglik[i - 1] - priordens[i - 
+        1]) &lt; tol)
+    if (!converged) {
+        warning(&quot;EM algorithm in function mixEM failed to converge. Results may be unreliable. Try increasing maxiter and rerunning.&quot;)
+    }
+    return(list(pihat = pi, B = loglik[1:i], niter = i, converged = converged))
+}
+</code></pre>
+
+<p>Now a new implementation based on SQUAREM</p>
+
+<pre><code class="r">normalize = function(x) {
+    return(x/sum(x))
+}
+library(SQUAREM)
+
+fixpoint = function(pi, matrix_lik, prior) {
+    m = t(pi * t(matrix_lik))  # matrix_lik is n by k; so this is also n by k
+    m.rowsum = rowSums(m)
+    classprob = m/m.rowsum  #an n by k matrix
+    pinew = normalize(colSums(classprob) + prior - 1)
+    return(pinew)
+}
+
+penloglik = function(pi, matrix_lik, prior) {
+    m = t(pi * t(matrix_lik))  # matrix_lik is n by k; so this is also n by k
+    m.rowsum = rowSums(m)
+    loglik = sum(log(m.rowsum))
+    subset = (prior - 1) != 0
+    priordens = sum((prior - 1)[subset] * log(pi[subset]))
+    return(loglik + priordens)
+}
+
+mixEM2 = function(matrix_lik, prior, pi.init = NULL, tol = 1e-07, maxiter = 5000) {
+    if (is.null(pi.init)) {
+        pi = rep(1/k, k)  # Use as starting point for pi
+    }
+    res = squarem(par = pi.init, fixptfn = fixpoint, objfn = penloglik, matrix_lik = matrix_lik, 
+        prior = prior, control = list(maxiter = maxiter, tol = tol))
+    return(list(pihat = res$par, B = res$value.objfn, niter = res$iter, converged = res$convergence))
+}
+
+# as above but with initial iterations done with smaller sample sizes and
+# tolerance set according to sample size
+mixEM3 = function(matrix_lik, prior, pi.init = NULL, tol = 1e-07, maxiter = 5000) {
+    if (is.null(pi.init)) {
+        pi = rep(1/k, k)  # Use as starting point for pi
+    }
+    n = nrow(matrix_lik)
+    o = order(apply(matrix_lik, 1, max) - matrix_lik[, 1])  #order according to increasing evidence against &#39;null&#39;
+    if (n &gt; 1000) {
+        subset = trunc(seq(1, n, length = 1000))
+        res = squarem(par = pi.init, fixptfn = fixpoint, objfn = penloglik, 
+            matrix_lik = matrix_lik[o[subset], ], prior = prior, control = list(maxiter = maxiter, 
+                tol = 0.001))
+        pi.init = res$par
+    }
+    res = squarem(par = pi.init, fixptfn = fixpoint, objfn = penloglik, matrix_lik = matrix_lik, 
+        prior = prior, control = list(maxiter = maxiter, tol = tol))
+    return(list(pihat = res$par, B = res$value.objfn, niter = res$iter, converged = res$convergence))
+}
+</code></pre>
+
+<p>Now simulate some data</p>
+
+<pre><code class="r">set.seed(100)
+sampsize = 1e+05
+sd = c(1, 1.1, 1.2)
+z = rnorm(sampsize, 0, sample(sd, sampsize, replace = TRUE))
+lik = t(vapply(z, dnorm, sd, sd = sd))
+prior = c(1, 1, 1)
+pi.init = c(0.3, 0.2, 0.5)
+</code></pre>
+
+<pre><code class="r">system.time(res1 &lt;- mixEM(lik, prior, pi.init))
+</code></pre>
+
+<pre><code>##    user  system elapsed 
+##   8.392   0.499   9.020
+</code></pre>
+
+<pre><code class="r">system.time(res2 &lt;- mixEM2(lik, prior, pi.init))
+</code></pre>
+
+<pre><code>##    user  system elapsed 
+##   5.053   0.429   5.505
+</code></pre>
+
+<pre><code class="r">system.time(res2 &lt;- mixEM3(lik, prior, pi.init))
+</code></pre>
+
+<pre><code>##    user  system elapsed 
+##   5.430   0.332   5.774
+</code></pre>
+
+<pre><code class="r">options(digits = 13)
+res1
+</code></pre>
+
+<pre><code>## $pihat
+## [1] 0.4205177602177 0.2065975812788 0.3728846585035
+## 
+## $B
+##   [1] -151332.2947526 -151331.2405145 -151330.2072715 -151329.1946953
+##   [5] -151328.2024591 -151327.2302380 -151326.2777087 -151325.3445501
+##   [9] -151324.4304431 -151323.5350710 -151322.6581192 -151321.7992760
+##  [13] -151320.9582318 -151320.1346802 -151319.3283171 -151318.5388416
+##  [17] -151317.7659555 -151317.0093638 -151316.2687745 -151315.5438988
+##  [21] -151314.8344510 -151314.1401488 -151313.4607130 -151312.7958679
+##  [25] -151312.1453412 -151311.5088638 -151310.8861704 -151310.2769989
+##  [29] -151309.6810907 -151309.0981908 -151308.5280478 -151307.9704136
+##  [33] -151307.4250438 -151306.8916976 -151306.3701377 -151305.8601302
+##  [37] -151305.3614449 -151304.8738552 -151304.3971377 -151303.9310730
+##  [41] -151303.4754448 -151303.0300405 -151302.5946508 -151302.1690701
+##  [45] -151301.7530959 -151301.3465294 -151300.9491750 -151300.5608406
+##  [49] -151300.1813373 -151299.8104795 -151299.4480850 -151299.0939746
+##  [53] -151298.7479726 -151298.4099063 -151298.0796062 -151297.7569058
+##  [57] -151297.4416418 -151297.1336539 -151296.8327848 -151296.5388801
+##  [61] -151296.2517884 -151295.9713611 -151295.6974526 -151295.4299200
+##  [65] -151295.1686232 -151294.9134249 -151294.6641903 -151294.4207875
+##  [69] -151294.1830870 -151293.9509621 -151293.7242884 -151293.5029443
+##  [73] -151293.2868104 -151293.0757697 -151292.8697079 -151292.6685127
+##  [77] -151292.4720744 -151292.2802852 -151292.0930400 -151291.9102354
+##  [81] -151291.7317706 -151291.5575467 -151291.3874668 -151291.2214362
+##  [85] -151291.0593622 -151290.9011540 -151290.7467227 -151290.5959815
+##  [89] -151290.4488452 -151290.3052307 -151290.1650565 -151290.0282429
+##  [93] -151289.8947121 -151289.7643878 -151289.6371953 -151289.5130619
+##  [97] -151289.3919161 -151289.2736882 -151289.1583099 -151289.0457147
+## [101] -151288.9358371 -151288.8286136 -151288.7239816 -151288.6218803
+## [105] -151288.5222500 -151288.4250325 -151288.3301709 -151288.2376094
+## [109] -151288.1472938 -151288.0591707 -151287.9731882 -151287.8892955
+## [113] -151287.8074431 -151287.7275823 -151287.6496659 -151287.5736474
+## [117] -151287.4994816 -151287.4271244 -151287.3565326 -151287.2876638
+## [121] -151287.2204770 -151287.1549318 -151287.0909889 -151287.0286098
+## [125] -151286.9677571 -151286.9083940 -151286.8504847 -151286.7939944
+## [129] -151286.7388887 -151286.6851343 -151286.6326988 -151286.5815501
+## [133] -151286.5316573 -151286.4829900 -151286.4355186 -151286.3892141
+## [137] -151286.3440484 -151286.2999937 -151286.2570232 -151286.2151107
+## [141] -151286.1742303 -151286.1343570 -151286.0954664 -151286.0575346
+## [145] -151286.0205382 -151285.9844546 -151285.9492613 -151285.9149369
+## [149] -151285.8814600 -151285.8488100 -151285.8169667 -151285.7859105
+## [153] -151285.7556221 -151285.7260827 -151285.6972740 -151285.6691782
+## [157] -151285.6417778 -151285.6150558 -151285.5889955 -151285.5635808
+## [161] -151285.5387957 -151285.5146250 -151285.4910534 -151285.4680663
+## [165] -151285.4456494 -151285.4237885 -151285.4024702 -151285.3816809
+## [169] -151285.3614078 -151285.3416381 -151285.3223594 -151285.3035596
+## [173] -151285.2852269 -151285.2673499 -151285.2499172 -151285.2329180
+## [177] -151285.2163415 -151285.2001773 -151285.1844153 -151285.1690455
+## [181] -151285.1540582 -151285.1394440 -151285.1251936 -151285.1112981
+## [185] -151285.0977486 -151285.0845367 -151285.0716540 -151285.0590922
+## [189] -151285.0468436 -151285.0349003 -151285.0232548 -151285.0118996
+## [193] -151285.0008277 -151284.9900319 -151284.9795054 -151284.9692417
+## [197] -151284.9592340 -151284.9494761 -151284.9399618 -151284.9306850
+## [201] -151284.9216399 -151284.9128207 -151284.9042217 -151284.8958375
+## [205] -151284.8876628 -151284.8796924 -151284.8719211 -151284.8643441
+## [209] -151284.8569564 -151284.8497535 -151284.8427306 -151284.8358833
+## [213] -151284.8292073 -151284.8226983 -151284.8163521 -151284.8101646
+## [217] -151284.8041320 -151284.7982503 -151284.7925158 -151284.7869248
+## [221] -151284.7814738 -151284.7761592 -151284.7709777 -151284.7659259
+## [225] -151284.7610007 -151284.7561987 -151284.7515171 -151284.7469527
+## [229] -151284.7425027 -151284.7381641 -151284.7339342 -151284.7298104
+## [233] -151284.7257899 -151284.7218701 -151284.7180486 -151284.7143229
+## [237] -151284.7106906 -151284.7071493 -151284.7036968 -151284.7003310
+## [241] -151284.6970495 -151284.6938503 -151284.6907313 -151284.6876906
+## [245] -151284.6847262 -151284.6818361 -151284.6790185 -151284.6762716
+## [249] -151284.6735937 -151284.6709829 -151284.6684377 -151284.6659564
+## [253] -151284.6635373 -151284.6611789 -151284.6588798 -151284.6566383
+## [257] -151284.6544532 -151284.6523229 -151284.6502461 -151284.6482214
+## [261] -151284.6462476 -151284.6443234 -151284.6424474 -151284.6406186
+## [265] -151284.6388358 -151284.6370977 -151284.6354032 -151284.6337514
+## [269] -151284.6321410 -151284.6305711 -151284.6290407 -151284.6275487
+## [273] -151284.6260942 -151284.6246762 -151284.6232939 -151284.6219463
+## [277] -151284.6206326 -151284.6193519 -151284.6181035 -151284.6168863
+## [281] -151284.6156998 -151284.6145431 -151284.6134155 -151284.6123163
+## [285] -151284.6112447 -151284.6102000 -151284.6091816 -151284.6081888
+## [289] -151284.6072209 -151284.6062775 -151284.6053577 -151284.6044611
+## [293] -151284.6035870 -151284.6027349 -151284.6019042 -151284.6010945
+## [297] -151284.6003051 -151284.5995355 -151284.5987853 -151284.5980540
+## [301] -151284.5973411 -151284.5966461 -151284.5959687 -151284.5953082
+## [305] -151284.5946644 -151284.5940368 -151284.5934249 -151284.5928285
+## [309] -151284.5922471 -151284.5916803 -151284.5911278 -151284.5905891
+## [313] -151284.5900641 -151284.5895522 -151284.5890533 -151284.5885669
+## [317] -151284.5880927 -151284.5876305 -151284.5871799 -151284.5867406
+## [321] -151284.5863124 -151284.5858950 -151284.5854881 -151284.5850915
+## [325] -151284.5847048 -151284.5843278 -151284.5839604 -151284.5836022
+## [329] -151284.5832530 -151284.5829126 -151284.5825808 -151284.5822574
+## [333] -151284.5819421 -151284.5816347 -151284.5813351 -151284.5810430
+## [337] -151284.5807582 -151284.5804807 -151284.5802101 -151284.5799464
+## [341] -151284.5796892 -151284.5794386 -151284.5791943 -151284.5789561
+## [345] -151284.5787239 -151284.5784976 -151284.5782770 -151284.5780619
+## [349] -151284.5778523 -151284.5776479 -151284.5774487 -151284.5772545
+## [353] -151284.5770652 -151284.5768807 -151284.5767008 -151284.5765254
+## [357] -151284.5763545 -151284.5761878 -151284.5760254 -151284.5758671
+## [361] -151284.5757127 -151284.5755622 -151284.5754156 -151284.5752726
+## [365] -151284.5751332 -151284.5749974 -151284.5748649 -151284.5747358
+## [369] -151284.5746100 -151284.5744873 -151284.5743677 -151284.5742511
+## [373] -151284.5741375 -151284.5740267 -151284.5739187 -151284.5738135
+## [377] -151284.5737109 -151284.5736109 -151284.5735134
+## 
+## $niter
+## [1] 379
+## 
+## $converged
+## [1] TRUE
+</code></pre>
+
+<pre><code class="r">res2
+</code></pre>
+
+<pre><code>## $pihat
+## [1] 0.4222496842368 0.2053470775886 0.3724032381746
+## 
+## $B
+## [1] -151284.5697135
+## 
+## $niter
+## [1] 60
+## 
+## $converged
+## [1] TRUE
+</code></pre>
+
+<pre><code class="r">res3
+</code></pre>
+
+<pre><code>## Error: object &#39;res3&#39; not found
+</code></pre>
+
+<p>This section just to run 100 times to see if any warnings results</p>
+
+<pre><code class="r"># options(warn=2) for(i in 1:100){ set.seed(i) z0 = rnorm(sampsize,0,1)
+# sd=c(1,2,4,8,16,32) prior=c(1,1,1,1,1,1) pi.init=c(1,1,1,1,1,1)/6 lik =
+# t(vapply(z0,dnorm,sd,sd=sd)) print(i) res2[[i]]&lt;-mixEM2(lik, prior,
+# pi.init) }
+</code></pre>
+
+</body>
+
+</html>
+

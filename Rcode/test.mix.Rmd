@@ -1,0 +1,95 @@
+```{r}
+############## HELPER FUNCTIONS #################################################
+#OUTPUT: k by n matrix of normal densities
+matdnorm = function (x, mu, sigma, log=FALSE) 
+{
+  k=length(mu)
+  n=length(x)
+  d = matrix(rep(x,rep(k,n)),nrow=k)
+  return(matrix(dnorm(d, mu, sigma, log),nrow=k))
+}
+```
+
+
+################################# TESTING #####################################
+```{r}
+setwd("~/Documents/git/ash/")
+source("Rcode/mix.R")
+source("Rcode/ash.R")
+source("Rcode/ash.oldfuncs.R")
+library("testthat")
+temp = normalmix(c(0.5,0.5),c(0,0),c(1,2))
+
+expect_that(comp_mean(temp),equals(c(0,0)))
+expect_that(mixmean(temp),equals(0))
+expect_that(mixsd(temp),equals(sqrt(2.5)))
+
+comp_postmean(temp,0,1)
+comp_postsd(temp,0,1)
+postsd(temp,0,1)
+
+set.seed(100)
+beta = rnorm(100)
+betahatse = abs(rnorm(100))
+betahat = rnorm(100, beta,betahatse)
+
+pd= posterior_dist(temp,betahat,betahatse)
+mv=normmix.mv(pd)
+expect_that(mv$mean,equals(postmean(temp,betahat,betahatse)))
+expect_that(sqrt(mv$var),equals(postsd(temp,betahat,betahatse)))
+
+x = seq(-5,5,length=100)
+plot(x,dens(temp,x),type="l")
+all.equal(compdens(temp,x),matdnorm(x, temp$mean,temp$sd))
+
+plot(x,mixcdf(temp,x),type="l")
+
+plot(x,compdens_conv(temp,x,0.01)[1,],type="l")
+plot(x,compdens_conv(temp,x,0.1)[2,],type="l")
+plot(x,dens_conv(temp,x,0.2),type="l")
+plot(x,dens_conv(temp,x,0.001),type="l")
+plot(x,dens_conv(temp,x,10),type="l")
+
+```
+
+
+
+```{r}
+temp2 = unimix(c(0.5,0.5),c(-3,3),c(-1,4))
+plot_dens(temp2)
+
+plot(x,compdens_conv(temp2,x,0.01)[1,],type="l")
+plot(x,compdens_conv(temp2,x,0.1)[2,],type="l")
+plot(x,dens_conv(temp2,x,0.2),type="l")
+
+
+compcdf_post(temp2,0,c(1,2,3),c(10,10,10))
+compcdf_post(temp2,-2,c(-2,3),c(0.1,1))
+
+plot_post_cdf(temp2,betahat=c(-2),sebetahat=10)
+plot_post_cdf(temp2,betahat=c(-2),sebetahat=1,col=2)
+```
+
+```{r}
+etruncnorm(10,20,0,1)
+my_etruncnorm(10,20,0,1)
+
+etruncnorm(-20,-10,0,1)
+my_etruncnorm(-20,-10,0,1)
+
+etruncnorm(-20,-10,5,1)
+my_etruncnorm(-20,-10,5,1)
+
+etruncnorm(-30,-20,5,2)
+my_etruncnorm(-30,-20,5,2)
+
+etruncnorm(-Inf,-38,0,1)
+my_etruncnorm(-Inf,-38,0,1)
+
+```
+
+```{r}
+  comp_postmean(temp2, c(1,2,3), c(10,10,10))
+  comp_postmean(temp2, c(1,2,3), c(0.1,0.1,0.1))
+```
+

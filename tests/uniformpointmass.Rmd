@@ -1,0 +1,23 @@
+# Test for ash with pointmass and uniform components
+
+```{r}
+  library(ashr)
+```
+
+
+```{r}
+  z = c(rt(1000,df=10),4*rt(1000,df=10))
+  z.ash.u= ash(z,1,mixcompdist="uniform",method="fdr",df=10)
+  z.ash.hu = ash(z,1,mixcompdist="halfuniform",method="fdr",df=10)
+  z.ash.u$fit$g
+  z.ash.hu$fit$g
+  z.ash.u$lfsr
+```
+
+```{r}
+  u = unimix(c(0.5,0.5),c(0,0),c(0,1))
+  x = c(-1,0,1)
+  s = c(1,1,1)
+  compdens_conv(u,x,s)
+```
+

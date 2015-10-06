@@ -1,0 +1,59 @@
+```{r}
+#opts_knit$set(progress = TRUE, verbose = TRUE,root.dir="~/Documents/git/ash/paper/Rcode")
+require(ashr)
+require(qvalue)
+require(fdrtool)
+require(mixfdr)
+require(locfdr)
+require(ggplot2)
+source("nullalthist.R")
+source("plot_FDReg_hist.R")
+```
+
+```{r}
+load("sim1.RData")
+```
+
+Show illustrative example
+```{r}
+altcol="cyan" #colors to use
+nullcol="blue" 
+nc=40 #number of bins in histograms
+ncz = 100 # number of bins in z score histograms
+
+
+source("plot_FDReg_hist.R")
+plot_FDReg_hist(simres1a,1)
+
+```
+
+```{r}
+plot_lfdr_hist=function(sim,iter=1){
+  require(fdrtool)
+  hh.pval=sim$pval[[iter]]
+  hh.hist=hist(hh.pval,freq=FALSE,xlab="p value",main="Distribution of p values",nclass=nc,col=altcol)
+  
+  hh.gren = grenander(ecdf(hh.pval))
+  abline(h=min(hh.gren$f.knots),col=nullcol,lwd=2)  
+  lines(hh.gren$x.knots,hh.gren$f.knots,lwd=2)
+  abline(v=0.1,lwd=2,col=2)
+  text(0.1,0.9,labels="a",col=2,cex=1)  
+  text(0.1,0.34,labels="b",col=2,cex=1.2)  
+  text(0.6,3,labels=paste0("lfdr = b/(a+b) =  ",round(min(hh.gren$f.knots)/approx(hh.gren$x.knots,hh.gren$f.knots,0.1)$y,2)),cex=1.2)
+}
+plot_lfdr_hist(simres1a,1)
+```
+
+
+
+```{r}
+
+ # pdf("figures/nullalthist.pdf")
+  plotall_hist(simres1a,1,nullalthist)
+#  dev.off() 
+
+ # pdf("figures/altnullhist.pdf")
+  plotall_hist(simres1a,1,altnullhist)
+#  dev.off()
+
+```
